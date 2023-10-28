@@ -16,6 +16,7 @@ public class FindDirectories {
     public static void main(String[] args) throws IOException {
         Path dir = Path.of(args.length == 0 ? System.getProperty("user.home") : args[0]);
         Files.walkFileTree(dir, new SimpleFileVisitor<>() {
+            @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                 if (attrs.isDirectory()) {
                     System.out.println(file);
@@ -23,6 +24,7 @@ public class FindDirectories {
                 return FileVisitResult.CONTINUE;
             }
 
+            @Override
             public FileVisitResult visitFileFailed(Path file, IOException e) {
                 return FileVisitResult.CONTINUE;
             }
