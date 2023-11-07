@@ -1,4 +1,4 @@
-package randomAccess;
+package randomaccess;
 
 import java.io.*;
 import java.time.LocalDate;

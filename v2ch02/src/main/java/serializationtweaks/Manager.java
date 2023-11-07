@@ -1,4 +1,4 @@
-package serializationTweaks;
+package serializationtweaks;
 
 public class Manager extends Employee {
     private Employee secretary;

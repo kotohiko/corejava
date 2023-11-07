@@ -1,4 +1,4 @@
-package genericReflection;
+package genericreflection;
 
 /**
  * @version 1.02 2021-05-30

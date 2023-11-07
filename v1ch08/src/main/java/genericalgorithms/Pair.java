@@ -1,4 +1,4 @@
-package genericAlgorithms;
+package genericalgorithms;
 
 import java.util.function.Supplier;
 

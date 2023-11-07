@@ -1,4 +1,4 @@
-package serializationTweaks;
+package serializationtweaks;
 
 import java.awt.*;
 import java.io.ObjectStreamException;

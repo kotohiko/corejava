@@ -12,6 +12,7 @@ import java.util.stream.Stream;
  * @version 1.02 2019-08-28
  */
 public class CollectingResults {
+
     public static Stream<String> noVowels() throws IOException {
         var contents = Files.readString(Path.of("gutenberg/alice30.txt"));
         List<String> wordList = List.of(contents.split("\\PL+"));

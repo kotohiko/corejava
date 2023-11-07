@@ -1,10 +1,13 @@
-package randomAccess;
+package randomaccess;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class DataIO {
+public final class DataIO {
+
+    private DataIO() {
+    }
 
     public static String readFixedString(int size, DataInput in) throws IOException {
         var b = new StringBuilder(size);

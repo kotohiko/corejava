@@ -1,4 +1,4 @@
-package memoryMap;
+package memorymap;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -19,6 +19,8 @@ import java.util.zip.CRC32;
  */
 public class MemoryMapTest {
 
+    private static final String MILLI_SECONDS = "milliseconds";
+
     public static void main(String[] args) throws IOException {
         System.out.println("Input Stream:");
         long start = System.currentTimeMillis();
@@ -26,28 +28,28 @@ public class MemoryMapTest {
         long crcValue = checksumInputStream(filename);
         long end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
-        System.out.println((end - start) + " milliseconds");
+        System.out.println((end - start) + " " + MILLI_SECONDS);
 
         System.out.println("Buffered Input Stream:");
         start = System.currentTimeMillis();
         crcValue = checksumBufferedInputStream(filename);
         end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
-        System.out.println((end - start) + " milliseconds");
+        System.out.println((end - start) + " " + MILLI_SECONDS);
 
         System.out.println("Random Access File:");
         start = System.currentTimeMillis();
         crcValue = checksumRandomAccessFile(filename);
         end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
-        System.out.println((end - start) + " milliseconds");
+        System.out.println((end - start) + " " + MILLI_SECONDS);
 
         System.out.println("Mapped File:");
         start = System.currentTimeMillis();
         crcValue = checksumMappedFile(filename);
         end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
-        System.out.println((end - start) + " milliseconds");
+        System.out.println((end - start) + " " + MILLI_SECONDS);
     }
 
     private static long crcGenerator(InputStream in) throws IOException {
