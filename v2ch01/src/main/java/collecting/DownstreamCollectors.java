@@ -55,9 +55,7 @@ public class DownstreamCollectors {
         System.out.println(stateToCityPopulationSummary.get("NY"));
 
         cities = readCities(CITIES_TXT);
-        Map<String, String> stateToCityNames = cities.collect(groupingBy(
-                City::state,
-                reducing("", City::name, (s, t) -> s.length() == 0 ? t : s + ", " + t)));
+        Map<String, String> stateToCityNames;
 
         cities = readCities(CITIES_TXT);
         stateToCityNames = cities.collect(groupingBy(City::state,
