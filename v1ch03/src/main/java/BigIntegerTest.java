@@ -23,11 +23,11 @@ public class BigIntegerTest {
 
         BigInteger lotteryOdds = BigInteger.ONE;
 
-        for (int i = 1; i <= k; i++)
+        for (int i = 1; i <= k; i++) {
             lotteryOdds = lotteryOdds
                     .multiply(n.subtract(BigInteger.valueOf(i - 1)))
                     .divide(BigInteger.valueOf(i));
-
+        }
         System.out.printf("Your odds are 1 in %s. Good luck!%n", lotteryOdds);
     }
 }

@@ -15,15 +15,15 @@ import java.util.zip.ZipInputStream;
  */
 public class ZipTest {
     public static void main(String[] args) throws IOException {
-        String zipname = args[0];
-        showContents(zipname);
+        String zipName = args[0];
+        showContents(zipName);
         System.out.println("---");
-        showContents2(zipname);
+        showContents2(zipName);
     }
 
-    public static void showContents(String zipname) throws IOException {
+    public static void showContents(String zipName) throws IOException {
         // Here, we use the classic zip API
-        try (var zin = new ZipInputStream(new FileInputStream(zipname))) {
+        try (var zin = new ZipInputStream(new FileInputStream(zipName))) {
             boolean done = false;
             while (!done) {
                 ZipEntry entry = zin.getNextEntry();
@@ -40,8 +40,8 @@ public class ZipTest {
         }
     }
 
-    public static void showContents2(String zipname) throws IOException {
-        FileSystem fs = FileSystems.newFileSystem(Path.of(zipname));
+    public static void showContents2(String zipName) throws IOException {
+        FileSystem fs = FileSystems.newFileSystem(Path.of(zipName));
         Files.walkFileTree(fs.getPath("/"), new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path path, BasicFileAttributes attrs)
