@@ -31,6 +31,8 @@
         <javafx-graphics.version>23-ea+22</javafx-graphics.version>
         <javafx-fxml.version>23-ea+22</javafx-fxml.version>
         <javafx-swing.version>23-ea+22</javafx-swing.version>
+        <javafx-web.version>23-ea+22</javafx-web.version>
+        <javafx-media.version>23-ea+22</javafx-media.version>
     </properties>
 
     <dependencies>
@@ -63,6 +65,18 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
             <version>${javafx-swing.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>${javafx-web.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>${javafx-media.version}</version>
         </dependency>
 
     </dependencies>
