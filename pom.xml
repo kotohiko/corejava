@@ -28,6 +28,9 @@
 
         <javafx-base.version>23-ea+22</javafx-base.version>
         <javafx-controls.version>23-ea+22</javafx-controls.version>
+        <javafx-graphics.version>23-ea+22</javafx-graphics.version>
+        <javafx-fxml.version>23-ea+22</javafx-fxml.version>
+        <javafx-swing.version>23-ea+22</javafx-swing.version>
     </properties>
 
     <dependencies>
@@ -42,6 +45,24 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx-controls.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-graphics -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx-graphics.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx-fxml.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx-swing.version}</version>
         </dependency>
 
     </dependencies>

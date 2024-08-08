@@ -26,8 +26,8 @@ public class LoggingImageViewer {
                 var handler = new FileHandler("%h/LoggingImageViewer.log", 0, LOG_ROTATION_COUNT);
                 Logger.getLogger("com.horstmann.corejava").addHandler(handler);
             } catch (IOException e) {
-                Logger.getLogger("com.horstmann.corejava").log(Level.SEVERE,
-                        "Can't create log file handler", e);
+                Logger.getLogger("com.horstmann.corejava")
+                        .log(Level.SEVERE, "Can't create log file handler", e);
             }
         }
 
@@ -112,7 +112,9 @@ class ImageViewerFrame extends JFrame {
                 String name = chooser.getSelectedFile().getPath();
                 logger.log(Level.FINE, "Reading file {0}", name);
                 label.setIcon(new ImageIcon(name));
-            } else logger.fine("File open dialog canceled.");
+            } else {
+                logger.fine("File open dialog canceled.");
+            }
             logger.exiting("ImageViewerFrame.FileOpenListener", "actionPerformed");
         }
     }
@@ -144,7 +146,9 @@ class WindowHandler extends StreamHandler {
     }
 
     public void publish(LogRecord record) {
-        if (!frame.isVisible()) return;
+        if (!frame.isVisible()) {
+            return;
+        }
         super.publish(record);
         flush();
     }

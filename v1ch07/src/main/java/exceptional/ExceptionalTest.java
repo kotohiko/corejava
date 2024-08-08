@@ -10,7 +10,7 @@ import java.util.Stack;
 public class ExceptionalTest {
     public static void main(String[] args) {
         int i;
-        int ntry = 10000000;
+        int ntry = 10_000_000;
         var stack = new Stack<String>();
 
         // test a stack for emptiness ntry times

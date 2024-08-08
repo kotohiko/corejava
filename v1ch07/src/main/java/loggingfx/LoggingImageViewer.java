@@ -36,8 +36,7 @@ public class LoggingImageViewer extends Application {
             try {
                 logger.setLevel(Level.ALL);
                 final int LOG_ROTATION_COUNT = 10;
-                Handler handler = new FileHandler("%h/LoggingImageViewer.log", 0,
-                        LOG_ROTATION_COUNT);
+                Handler handler = new FileHandler("%h/LoggingImageViewer.log", 0, LOG_ROTATION_COUNT);
                 logger.addHandler(handler);
                 handler.setLevel(Level.ALL);
             } catch (IOException e) {
@@ -85,8 +84,7 @@ public class LoggingImageViewer extends Application {
                 pane.setCenter(new ImageView(image));
             } catch (IOException e) {
                 logger.log(Level.FINE, "File not found", e);
-                Alert alert = new Alert(AlertType.ERROR,
-                        "Cannot open file.");
+                Alert alert = new Alert(AlertType.ERROR, "Cannot open file.");
                 alert.showAndWait();
             }
         }
