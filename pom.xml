@@ -13,6 +13,7 @@
         <module>v1ch03</module>
         <module>v1ch05</module>
         <module>v1ch06</module>
+        <module>v1ch07</module>
         <module>v1ch08</module>
         <module>v2ch01</module>
         <module>v2ch02</module>
@@ -24,6 +25,25 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <javafx-base.version>23-ea+22</javafx-base.version>
+        <javafx-controls.version>23-ea+22</javafx-controls.version>
     </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-base -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx-base.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx-controls.version}</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
