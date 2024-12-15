@@ -26,15 +26,19 @@ public class ScriptTest {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
+                // 当虚拟机启动时，它会发现可用的脚本引擎。为了枚举这些引擎，需要构建一个 ScriptEngineManager（未完）
                 var manager = new ScriptEngineManager();
                 String language;
                 if (args.length == 0) {
                     System.out.println("Available factories: ");
-                    for (ScriptEngineFactory factory : manager.getEngineFactories())
+                    // （接上）并调用 getEngineFactories() 方法
+                    for (ScriptEngineFactory factory : manager.getEngineFactories()) {
                         System.out.println(factory.getEngineName());
-
+                    }
                     language = "nashorn";
-                } else language = args[0];
+                } else {
+                    language = args[0];
+                }
 
                 final ScriptEngine engine = manager.getEngineByName(language);
                 if (engine == null) {
@@ -42,14 +46,12 @@ public class ScriptTest {
                     System.exit(1);
                 }
 
-                final String frameClassName
-                        = args.length < 2 ? "buttons1.ButtonFrame" : args[1];
-
-                var frame
-                        = (JFrame) Class.forName(frameClassName).getConstructor().newInstance();
+                final String frameClassName = args.length < 2 ? "buttons1.ButtonFrame" : args[1];
+                var frame = (JFrame) Class.forName(frameClassName).getConstructor().newInstance();
                 InputStream in = frame.getClass().getResourceAsStream("init." + language);
-                if (in != null) engine.eval(
-                        new InputStreamReader(in, StandardCharsets.UTF_8));
+                if (in != null) {
+                    engine.eval(new InputStreamReader(in, StandardCharsets.UTF_8));
+                }
                 var components = new HashMap<String, Component>();
                 getComponentBindings(frame, components);
                 // components.forEach((name, c) -> engine.put(name, c));
@@ -57,7 +59,9 @@ public class ScriptTest {
 
                 var events = new Properties();
                 in = frame.getClass().getResourceAsStream(language + ".properties");
-                events.load(new InputStreamReader(in, StandardCharsets.UTF_8));
+                if (in != null) {
+                    events.load(new InputStreamReader(in, StandardCharsets.UTF_8));
+                }
 
                 for (Object e : events.keySet()) {
                     String[] s = ((String) e).split("\\.");
@@ -85,8 +89,9 @@ public class ScriptTest {
             namedComponents.put(name, c);
         }
         if (c instanceof Container container) {
-            for (Component child : container.getComponents())
+            for (Component child : container.getComponents()) {
                 getComponentBindings(child, namedComponents);
+            }
         }
     }
 
@@ -104,11 +109,12 @@ public class ScriptTest {
             throws ReflectiveOperationException, IntrospectionException {
         Object bean = components.get(beanName);
         EventSetDescriptor descriptor = getEventSetDescriptor(bean, eventName);
-        if (descriptor == null) return;
+        if (descriptor == null) {
+            return;
+        }
         descriptor.getAddListenerMethod().invoke(bean,
                 Proxy.newProxyInstance(null, new Class[]{descriptor.getListenerType()},
-                        (proxy, method, args) ->
-                        {
+                        (proxy, method, args) -> {
                             engine.eval(scriptCode);
                             return null;
                         }));
@@ -116,9 +122,11 @@ public class ScriptTest {
 
     private static EventSetDescriptor getEventSetDescriptor(Object bean, String eventName)
             throws IntrospectionException {
-        for (EventSetDescriptor descriptor : Introspector.getBeanInfo(bean.getClass())
-                .getEventSetDescriptors())
-            if (descriptor.getName().equals(eventName)) return descriptor;
+        for (EventSetDescriptor descriptor : Introspector.getBeanInfo(bean.getClass()).getEventSetDescriptors()) {
+            if (descriptor.getName().equals(eventName)) {
+                return descriptor;
+            }
+        }
         return null;
     }
 }
